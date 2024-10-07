@@ -1,0 +1,24 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; // Makes sure the card fills the column's height
+
+    img {
+      object-fit: cover; // Cover the entire image area without distortion
+      height: 200px; // Fixed height for images to keep all cards uniform
+      width: 100%; // Full width of the card
+    }
+  
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1; // Allow the body to grow and fill remaining space
+      justify-content: space-between; // Ensures description and other elements (like price) are spaced well
+    }
+  
+    .card-text {
+      margin-bottom: 0; // Remove bottom margin to align all card texts
+    }
+  
+}
+  

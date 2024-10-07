@@ -1,5 +1,6 @@
 export interface Car{
-    brand:string;
+    id:number,
+    name:string;
     carCondition:string;
     color:string;
     description:string;
@@ -10,7 +11,7 @@ export interface Car{
     isDeleted:boolean;
     make:string;
     manufactureYear:number;
-    mileage:number;
+    Mileage:number;
     model:string;
     modelVariant:string;
     price:number;

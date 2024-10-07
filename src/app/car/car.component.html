@@ -1,0 +1,87 @@
+<div class="container my-5">
+    <div class="row">
+        <section class="col-3 my-3">
+            <h5 class="text-warning ms-3">Sort</h5>
+            <select class="form-select mb-4" onchange="onSortSelected($event)">
+               <option value="Option.value" *ngFor="let Option of sortedOptios" >
+                {{Option.name}}
+               </option>
+            </select>
+            <h5 class="text-warning ms-3">Brands</h5>
+            <ul class="list-group my-3">
+                <li class="list-group-item" 
+                    *ngFor="let brand of brands"
+                    [class.Active]="brand.id===carparams.brandId"
+                    [value]="brand.id"
+                    (click)="onBrandSelected(brand.id)"
+                    >
+                    {{ brand.name }}</li>
+            </ul>
+
+  
+
+            <h5 class="text-warning ms-3">Types</h5>
+            <ul class="list-group my-3">
+                <li class="list-group-item" 
+                *ngFor="let type of types"
+                [class.active]="type.id===carparams.typeId"
+                [value]="type.id"
+                (click)="onTypeSelected(type.id)"
+                >
+                {{ type.name }}</li>
+            </ul>
+
+        </section>
+  
+        <section class="col-9">
+            <div class="d-flex justify-content-between align-items-center pb-2">
+                <header>
+
+                </header>
+                <div class="d-flex mt-2">
+                    <input type="text" placeholder="Search" class="form-control me-2">
+                    <button class="btn btn-outline-primary mx-2">Search</button>
+                    <button class="btn btn-outline-success">Reset</button>
+                </div>
+            </div>
+  
+            <div class="row row-cols-3 g-3 my-4">
+                <div class="col" *ngFor="let item of cars">
+                  <div class="card h-100"> <!-- Ensure the card takes the full height -->
+                    <img [src]="item.imagePath" class="card-img-top" alt="Car Image">
+                    <div class="card-body d-flex flex-column">
+                      <p class="card-text flex-grow-1">{{ item.description }}</p> <!-- Text area grows with available space -->
+                      <p class="card-text text-muted">{{ item.price | currency }}</p> <!-- Display price or any extra info -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+        <div class="d-flex justify-content-center">
+          <div class="row">
+            <div class="col-xs-12 col-12">
+              <pagination
+                [directionLinks]="false"
+                [totalItems]="totalItems"
+                [(ngModel)]="currentPage"
+                (numPages)="smallnumPages = $event">
+              </pagination>
+            </div>
+          </div>
+           
+          <div class="row">
+            <div class="col-xs-12 col-12">
+              <pager
+                [totalItems]="totalItems"
+                [align]="true"
+                [(ngModel)]="currentPage"
+                (pageChanged)="pageChanged($event)"
+                pageBtnClass="btn"
+                [itemsPerPage]="10"
+                class="pull-left">
+              </pager>
+            </div>
+          </div>
+        </div>
+   </div>
+</div>
