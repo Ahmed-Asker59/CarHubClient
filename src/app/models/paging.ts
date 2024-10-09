@@ -1,9 +1,12 @@
-export interface Pagination<T>
+import { Car } from "./car";
+
+export class Pagination
 {
-    count:Number
-    pageIndex:number,
-    pageSize:number,
-    data: T,
+    constructor(){}
+    count:number=0
+    pageIndex:number=1;
+    pageSize:number=6;
+    data: Car[] = [];
 
 
 }
