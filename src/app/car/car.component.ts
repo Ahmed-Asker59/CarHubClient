@@ -1,10 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, model, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarService } from '../services/car.service';
 import { PageChangedEvent, PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule } from '@angular/forms';
 import { carParams } from '../models/carParams';
 import { Pagination } from '../models/paging';
+import { FilterOptions } from '../models/FilterOptions';
 
 @Component({
   selector: 'app-car',
@@ -21,6 +22,9 @@ export class CarComponent implements OnInit {
   searchTerms!: ElementRef;
   cars: Pagination = new Pagination();
 
+  @ViewChild('All')
+  all!:ElementRef
+
   sortedOptions = [
     { name: "Alphabetical", value: 'nameAsc' },
     { name: 'Price : Low to High', value: 'priceAsc' },
@@ -31,28 +35,35 @@ export class CarComponent implements OnInit {
     { name: 'Mileage : High to Low', value: 'MileageDesc' }
   ];
 
+  FilterOptions:FilterOptions = new FilterOptions()
+  originalFilters:FilterOptions = new FilterOptions();
+
+  SelectedModelId=0;
+  
+
+  flag:boolean = false;
   totalcount: number = 0;
   carparams: carParams = new carParams();
+  carlist:any;
 
   ngOnInit(): void {
     this.getCars();
   }
 
   getCars() {
-    console.log('Fetching cars with the following params:', this.carparams); // Check carparams before making the API call
-    this.carservice.getCars(this.carparams).subscribe({
-      next: (response) => {
-        this.cars = response;
-        console.log('Response:', response);  // Check what response is being returned
-        this.carparams.PageIndex = response.pageIndex;  // Ensure PageIndex is being set correctly
-        this.carparams._pageSize = response.pageSize;
-        this.totalcount = response.count;
-        console.log('Total count:', this.totalcount);
-      },
-      error: (e) => console.error('Error fetching cars:', e),
-      complete: () => console.log('Car data fetching complete.')
-    });
-  }
+    
+  this.carservice.getCars(this.carparams).subscribe({
+    next: (response) => {
+      
+      this.cars.data = response.data;
+      this.carlist = this.cars.data;
+      this.FilterOptions = response.filterOptions; 
+      this.totalcount = response.count;
+    },
+    error: (e) => console.error('Error fetching cars:', e),
+    complete: () => console.log('Car data fetching complete.')
+  });
+}
   
 
   onSortSelected(event: any) {
@@ -68,6 +79,7 @@ export class CarComponent implements OnInit {
     this.getCars();
   }
 
+ 
   resetFilters() {
     if(this.searchTerms) 
       this.searchTerms.nativeElement.value=""

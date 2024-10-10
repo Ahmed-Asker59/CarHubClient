@@ -16,4 +16,5 @@ export class carParams{
     sortBy  = "";
     sortDirection  = "";
     SearchValue="";
+    transmission="";
 }
