@@ -8,6 +8,64 @@
           {{ option.name }}
         </option>
       </select>
+
+      <h5 class="text-warning ms-3">Filters</h5>
+      <div class="mb-3">
+        <label for="make" class="form-label">Make</label>
+        <select class="form-select" id="make" [(ngModel)]="carparams.makeId" (change)="getCars()">
+          <option value="" disabled selected>Select Make</option>
+          <option *ngFor="let make of FilterOptions.makes" [value]="make.id">{{ make.name }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Model</label>
+        <select class="form-select" id="model" [(ngModel)]="carparams.modelId" (change)="getCars()">
+          <option value="" disabled selected>Select Model</option>
+          <option *ngFor="let model of FilterOptions.models" [value]="model.id" >{{ model.name }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Colors</label>
+        <select class="form-select" id="model" [(ngModel)]="carparams.color" (change)="getCars()">
+          <option value="" disabled selected>Select Color</option>
+          <option *ngFor="let color of FilterOptions.colors" [value]="color">{{ color }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Fuel Types</label>
+        <select class="form-select" id="model" [(ngModel)]="carparams.fuel" (change)="getCars()">
+          <option value="" disabled selected>Select FuelTypes</option>
+          <option *ngFor="let fuel of FilterOptions.fuelTypes" [value]="fuel">{{ fuel }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Model Variants</label>
+        <select class="form-select" id="model" [(ngModel)]="carparams.fuel" (change)="getCars()">
+          <option value="" disabled selected>Select ModelVariants</option>
+          <option *ngFor="let modelVariant of FilterOptions.modelVariants" [value]="modelVariant">{{ modelVariant }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Car Conditions</label>
+        <select class="form-select" id="model" [(ngModel)]="carparams.carCondition" (change)="getCars()">
+          <option value="" disabled selected>Select CarConditions</option>
+          <option *ngFor="let carCondition of FilterOptions.carConditions" [value]="carCondition">{{ carCondition }}</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="model" class="form-label">Transmissions</label>
+        <select class="form-select" id="model" [(ngModel)]="carparams.transmission" (change)="getCars()">
+          <option value="" disabled selected>Select Transmissions</option>
+          <option *ngFor="let transmission of FilterOptions.transmissions" [value]="transmission">{{ transmission }}</option>
+        </select>
+      </div>
+
       
     </section>
     <section class="col-9">
