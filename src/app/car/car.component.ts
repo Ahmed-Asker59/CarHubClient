@@ -1,16 +1,16 @@
 import { Component, ElementRef, model, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CarService } from '../services/car.service';
 import { PageChangedEvent, PaginationModule } from 'ngx-bootstrap/pagination';
 import { FormsModule } from '@angular/forms';
 import { carParams } from '../models/carParams';
 import { Pagination } from '../models/paging';
 import { FilterOptions } from '../models/FilterOptions';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-car',
   standalone: true,
-  imports: [CommonModule, PaginationModule, FormsModule],
+  imports: [ PaginationModule, FormsModule,CommonModule],
   templateUrl: './car.component.html',
   styleUrl: './car.component.scss'
 })
@@ -35,8 +35,10 @@ export class CarComponent implements OnInit {
     { name: 'Mileage : High to Low', value: 'MileageDesc' }
   ];
 
-  
+  FilterOptions:FilterOptions = new FilterOptions()
+  originalFilters:FilterOptions = new FilterOptions();
 
+  SelectedModelId=0;
   
 
   flag:boolean = false;
@@ -55,6 +57,7 @@ export class CarComponent implements OnInit {
       
       this.cars.data = response.data;
       this.carlist = this.cars.data;
+      this.FilterOptions = response.filterOptions; 
       this.totalcount = response.count;
     },
     error: (e) => console.error('Error fetching cars:', e),
