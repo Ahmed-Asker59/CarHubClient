@@ -1,65 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-nav{
- position: fixed;
- left: 0;
- top: 0;
- width: 100%;
- height: 75px;
- background: #2980b9;
- box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-nav .navbar{
- display: flex;
- align-items: center;
- justify-content: space-between;
- height: 100%;
- max-width: 90%;
- background: #2980b9;
- margin: auto;
-}
-nav .navbar .logo a{
-  color: #fff;
-  font-size: 27px;
-  font-weight: 600;
-  text-decoration: none;
-}
-nav .navbar .menu{
-  display: flex;
-}
-.navbar .menu li{
-  list-style: none;
-  margin: 0 15px;
-}
-.navbar .menu li a{
-  color: #fff;
-  font-size: 17px;
-  font-weight: 500;
-  text-decoration: none;
-}
-section{
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  color: #96c7e8;
-  font-size: 70px;
-}
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+// *{
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+//   font-family: 'Poppins', sans-serif;
+// }
+// nav{
+//  position: fixed;
+//  left: 0;
+//  top: 0;
+//  width: 100%;
+//  height: 75px;
+//  background: #2980b9;
+//  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+// }
+// nav .navbar{
+//  display: flex;
+//  align-items: center;
+//  justify-content: space-between;
+//  height: 100%;
+//  max-width: 90%;
+//  background: #2980b9;
+//  margin: auto;
+// }
+// nav .navbar .logo a{
+//   color: #fff;
+//   font-size: 27px;
+//   font-weight: 600;
+//   text-decoration: none;
+// }
+// nav .navbar .menu{
+//   display: flex;
+// }
+// .navbar .menu li{
+//   list-style: none;
+//   margin: 0 15px;
+// }
+// .navbar .menu li a{
+//   color: #fff;
+//   font-size: 17px;
+//   font-weight: 500;
+//   text-decoration: none;
+// }
+// section{
+//   display: flex;
+//   height: 100vh;
+//   width: 100%;
+//   align-items: center;
+//   justify-content: center;
+//   color: #96c7e8;
+//   font-size: 70px;
+// }
 
-.button a{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  color: #fff;
-  background: #2980b9;
-  padding: 7px 12px;;
-  font-size: 18px;
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.15);
+// .button a{
+//   position: fixed;
+//   bottom: 20px;
+//   right: 20px;
+//   color: #fff;
+//   background: #2980b9;
+//   padding: 7px 12px;;
+//   font-size: 18px;
+//   border-radius: 6px;
+//   box-shadow: rgba(0, 0, 0, 0.15);
+// }
+
+// .custom-nav {
+// background-color: #000d19; /* Set the same background color as the footer */
+// border-bottom: 1px solid #ddd; /* Match the border with the footer */
+// color: white;
+// }
+.img{
+    width: 100PX;
 }
+/* Adjusts the height and padding of the navbar */
+.custom-nav {
+    padding: 0.5rem 1rem; /* Reduce padding to make the navbar slimmer */
+    background-color: #000d19;
+  }
+  
+ 
+  
+  /* Adjusts the size of navbar links */
+//   .nav-link {
+//     padding: 0.5rem 0.75rem; /* Reduce padding of the links to make them smaller */
+//     font-size: 0.9rem; /* Adjust font size if you want to make the text smaller */
+//   }
+  
+  /* Optional: Adjust navbar container for tighter fit */
+  .navbar .container {
+    max-width: 100%; /* Ensures it spans the entire width */
+  }
+  

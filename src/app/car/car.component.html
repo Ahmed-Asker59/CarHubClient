@@ -1,0 +1,44 @@
+<div class="container my-5">
+  <div class="row">
+    <section class="col-3 my-3">
+      <h5 class="text-warning ms-3">Sort</h5>
+      <select class="form-select mb-4" (change)="onSortSelected($event)">
+        <option [value]="option.value" *ngFor="let option of sortedOptions">
+          {{ option.name }}
+        </option>
+      </select>
+    </section>
+
+    <section class="col-9">
+      <div class="d-flex justify-content-between align-items-center pb-2">
+        <div class="d-flex mt-2">
+          <input type="text" (keyup)="onSearch()" placeholder="Search" class="form-control me-2" #search>
+          <button class="btn btn-outline-primary mx-2" (click)="onSearch()">Search</button>
+          <button class="btn btn-outline-success" (click)="resetFilters()">Reset</button>
+        </div>
+      </div>
+
+      <div class="row row-cols-3 g-3 my-4">
+        <div class="col" *ngFor="let item of cars.data">
+          <div class="card h-100">
+            <img [src]="item.imagePath" class="card-img-top" alt="Car Image">
+            <div class="card-body d-flex flex-column">
+              <p class="card-text flex-grow-1">{{ item.description }}</p>
+              <p class="card-text text-muted">{{ item.price | currency }}</p>
+              <p class="card-text text-muted">{{ item.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <pagination class="d-flex justify-content-center mt-3"
+      [itemsPerPage]="carparams._pageSize"
+      [(ngModel)]="carparams.PageIndex"  
+      [totalItems]="totalcount"
+      (pageChanged)="pageChanged($event)">
+  </pagination>
+  
+
+    </section>
+  </div>
+</div>

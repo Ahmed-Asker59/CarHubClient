@@ -1,0 +1,72 @@
+
+    <div class="container my-5">
+        <h2 class="mb-4">General Enquiry</h2>
+        <p>Send us your enquiry and our team will get back to you.</p>
+        <form>
+            <!-- Title -->
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <select class="form-select" id="title" required>
+                    <option value="" selected disabled>Please select</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Mrs">Mrs</option>
+                </select>
+            </div>
+
+            <!-- Name Fields -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                </div>
+            </div>
+
+            <!-- Contact Fields -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneNumber" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+            </div>
+
+            <!-- Dealership and Sub Category -->
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="dealership" class="form-label">Dealership</label>
+                    <select class="form-select" id="dealership" required>
+                        <option value="" selected disabled>Please select</option>
+                        <option value="dealership1">Dealership 1</option>
+                        <option value="dealership2">Dealership 2</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="subCategory" class="form-label">Sub Category</label>
+                    <select class="form-select" id="subCategory" required>
+                        <option value="" selected disabled>Please select</option>
+                        <option value="subcategory1">Sub Category 1</option>
+                        <option value="subcategory2">Sub Category 2</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Enquiry Details -->
+            <div class="mb-3">
+                <label for="enquiryDetails" class="form-label">Enquiry Details</label>
+                <textarea class="form-control" id="enquiryDetails" rows="4" placeholder="Enquiry details here..." required></textarea>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+    </div>
+
+
