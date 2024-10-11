@@ -4,7 +4,6 @@ import { AboutComponent } from './about/about.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { CarComponent } from './car/car.component';
 import { EnquiryComponent } from './enquiry/enquiry.component';
-import { MercedesComponent } from './mercedes/mercedes.component';
 
 export const routes: Routes = [
     { path: "home", component: HomeComponent },
@@ -12,6 +11,6 @@ export const routes: Routes = [
     { path: "contactus", component: ContactusComponent },
     { path: "car", component: CarComponent },
     { path: "enquiry", component: EnquiryComponent },
-    {path:"mercedes",component:MercedesComponent},
+
     { path: "", component: HomeComponent }
 ]

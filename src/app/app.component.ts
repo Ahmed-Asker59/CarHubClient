@@ -26,6 +26,14 @@ export class AppComponent implements OnInit{
     
   }
   ngOnInit(): void {
+
+    this.http.get(this.apiUrl).subscribe({
+      next: (response:any) =>  console.log(response),
+      error: (error) => console.log(error),
+      complete: () => {
+        console.log("Request completed")
+      }
+    })
     
   }
 
