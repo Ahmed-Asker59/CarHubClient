@@ -1,0 +1,61 @@
+.parallax-content {
+    position: relative;
+    z-index: 1;
+    background-image: url("/Images/parallax-01.jpg");
+}
+.fullwidth-page_mod-1 {
+    min-height: 90vh;
+}
+.fullwidth-page {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+}
+.section-xxl {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+[class*='bg-overlay'] {
+    position: relative;
+}
+.bg-overlay-light:before {
+    background-color: #fff;
+}
+[class*='bg-overlay']:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .1;
+}
+.fullwidth-page > * {
+    flex-basis: 100%;
+}
+[class*='bg-overlay'] > * {
+    position: relative;
+}
+.row {
+    --bs-gutter-x: 40px;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+}
+.button-primary {
+    color: #fff;
+    background-color: #212126;
+    border-color: #212126;
+    padding: .5rem 1rem; /* Adjust padding for height and width */
+    font-size: 1.2rem; /* Increase font size */
+    border-radius: 5px; /* Optional: Increase for roundness */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+}
