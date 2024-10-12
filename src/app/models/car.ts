@@ -11,9 +11,10 @@ export interface Car{
     isDeleted:boolean;
     make:string;
     manufactureYear:number;
-    Mileage:number;
+    mileage:number;
     model:string;
     modelVariant:string;
     price:number;
+    reservationFee:number;
     transmission:string;
 }

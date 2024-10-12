@@ -5,13 +5,18 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { CarComponent } from './car/car.component';
 import { EnquiryComponent } from './enquiry/enquiry.component';
 import { MercedesComponent } from './mercedes/mercedes.component';
+import { CarDetailsComponent } from './car-details/car-details.component';
+import { ReserveOrderComponent } from './reserve-order/reserve-order.component';
 
 export const routes: Routes = [
-    { path: "home", component: HomeComponent },
+    { path: "", component: HomeComponent },
+    { path: "home", component: HomeComponent },   
     { path: "about", component: AboutComponent},
     { path: "contactus", component: ContactusComponent },
     { path: "car", component: CarComponent },
     { path: "enquiry", component: EnquiryComponent },
     {path:"mercedes",component:MercedesComponent},
-    { path: "", component: HomeComponent }
+    {path:"details/:id", component:CarDetailsComponent},
+    {path:"reserve/:id", component:ReserveOrderComponent}
+    
 ]

@@ -3,6 +3,7 @@ import { Injectable} from '@angular/core';
 import { carParams } from '../models/carParams';
 import { Pagination } from '../models/paging';
 import { Observable } from 'rxjs';
+import { Car } from '../models/car';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CarService {
 
   constructor(public http:HttpClient) { }
 
-  baseUrl = "http://localhost:5151/api/"
+  baseUrl = "http://localhost:5151/api/cars/";
 
   getCars(carParams: carParams): Observable<Pagination>{
     let params = new HttpParams();
@@ -30,7 +31,13 @@ export class CarService {
     if(carParams._pageSize) params = params.append("_pageSize",carParams._pageSize)
     if(carParams.carCondition) params = params.append("carCondition",carParams.carCondition)
     if(carParams.SearchValue) params = params.append("SearchValue",carParams.SearchValue)
-    return this.http.get<Pagination>(this.baseUrl+"cars",{params:params});
+    return this.http.get<Pagination>(this.baseUrl,{params:params});
+  }
+
+
+  getCar(id:number){
+
+    return this.http.get<Car>(this.baseUrl+id);
   }
 
 

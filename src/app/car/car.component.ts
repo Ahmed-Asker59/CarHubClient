@@ -6,11 +6,12 @@ import { carParams } from '../models/carParams';
 import { Pagination } from '../models/paging';
 import { FilterOptions } from '../models/FilterOptions';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-car',
   standalone: true,
-  imports: [ PaginationModule, FormsModule,CommonModule],
+  imports: [ PaginationModule, FormsModule,CommonModule, RouterLink],
   templateUrl: './car.component.html',
   styleUrl: './car.component.scss'
 })
@@ -95,6 +96,7 @@ onSearch(){
   this.carparams.SearchValue = this.searchTerms.nativeElement.value;
   this.getCars();
 }
+
 
   
 }

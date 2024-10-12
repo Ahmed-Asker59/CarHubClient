@@ -95,7 +95,9 @@
               <p class="card-text flex-grow-1">{{ item.description }}</p>
               <p class="card-text text-muted">{{ item.price | currency }}</p>
               <p class="card-text text-muted">{{ item.name }}</p>
+              
             </div>
+            <button class="btn btn-warning"   [routerLink]="['/details', item.id]">Details</button>
           </div>
         </div>
       </div>

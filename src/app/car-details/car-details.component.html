@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+<div class="container mt-5 mb-5" *ngIf="car">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <img 
+        src="{{car.imagePath}}" 
+        class="img-fluid rounded" 
+        alt="{{car.name}}">
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{car.name}}</h5>
+          <div class="car-info mb-3 fw-medium">
+           {{car.manufactureYear}}   <span *ngIf="car.mileage > 0"> | {{car.mileage}} miles</span> | {{car.fuel}} | {{car.transmission}}
+          </div>
+          <div class="card-text">
+            <span *ngIf="car?.description;">
+              {{ car.description }}
+            </span>
+            <div class="inqueries-box">
+              <span class="fw-bolder car-des me-2">
+                <i class="bi bi-telephone-fill "></i>
+                Get In Touch For More Inqueries            
+              </span>
+             <div>
+              <a href="tel:{{CarHubPhoneNumber}}" class="text-primary fw-bold ms-2">
+                {{CarHubPhoneNumber}}
+              </a> 
+             </div> 
+            </div>
+          </div>
+        <div class="card-text fw-bolder fs-3 mt-3">
+            Purchase for {{car.price | currency}}
+        </div>
+        <div class="reserve" *ngIf="car.isAvailableForReserve">
+          <a  href="/reserve" [routerLink]="['/reserve', car.id]" class="reserve-button fw-bold mt-3"> Reserve Now For {{car.reservationFee | currency}}</a>
+          <a  href="#" class="reserved-button fw-bold mt-3"> This Car Is Reserved</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
