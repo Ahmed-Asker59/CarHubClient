@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class="row">
     <section class="col-3 my-3">
-      <h5 class="text-warning ms-3">Sort</h5>
+      <h5>Sort</h5>
       <select class="form-select mb-4" (change)="onSortSelected($event)">
         <option value="" disabled selected>Select Sort Option</option>
         <option [value]="option.value" *ngFor="let option of sortedOptions">
@@ -9,7 +9,7 @@
         </option>
       </select>
 
-      <h5 class="text-warning ms-3">Filters</h5>
+      <h5>Filters</h5>
       <div class="mb-3">
         <label for="make" class="form-label">Make</label>
         <select class="form-select" id="make" [(ngModel)]="carparams.makeId" (change)="getCars()">
@@ -92,12 +92,15 @@
                  class="card-img-top" 
                  alt="Car Image">
             <div class="card-body d-flex flex-column">
-              <p class="card-text flex-grow-1">{{ item.description }}</p>
-              <p class="card-text text-muted">{{ item.price | currency }}</p>
-              <p class="card-text text-muted">{{ item.name }}</p>
+              <p class="card-text fw-bold">{{ item.name }}</p>
+              <span *ngIf="item?.description;">
+                {{ item.description }}
+              </span>
+              <p class="card-text  fw-medium">{{ item.price | currency }}</p>
+              
               
             </div>
-            <button class="btn btn-warning"   [routerLink]="['/details', item.id]">Details</button>
+            <button class="btn details-button"   [routerLink]="['/details', item.id]">Details</button>
           </div>
         </div>
       </div>

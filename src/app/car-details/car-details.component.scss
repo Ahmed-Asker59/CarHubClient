@@ -65,6 +65,15 @@
         color: #fff;
         border-radius: 0 0 8px 8px;
     }
+    .rental-button  {
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+        width: 100%;
+        background-color: #469c49; /* Green color */
+        color: #fff;
+        border-radius: 0 0 8px 8px;
+    }
     
     // if car is reserved
     .reserved-button {

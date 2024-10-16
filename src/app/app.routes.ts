@@ -7,6 +7,7 @@ import { EnquiryComponent } from './enquiry/enquiry.component';
 import { MercedesComponent } from './mercedes/mercedes.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { ReserveOrderComponent } from './reserve-order/reserve-order.component';
+import { RentOrderComponent } from './rent-order/rent-order.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: "enquiry", component: EnquiryComponent },
     {path:"mercedes",component:MercedesComponent},
     {path:"details/:id", component:CarDetailsComponent},
-    {path:"reserve/:id", component:ReserveOrderComponent}
+    {path:"reserve/:id/:reservationFee", component:ReserveOrderComponent},
+    {path:"rent/:id/:rentalfeeperday", component: RentOrderComponent}
     
 ]

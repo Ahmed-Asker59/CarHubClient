@@ -1,47 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Car } from '../models/car';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CarService } from '../services/car.service';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { Client } from '../models/client';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CarService } from '../services/car.service';
+import { CommonModule } from '@angular/common';
 import { CarReservationService } from '../services/car-reservation.service';
 import Swal from 'sweetalert2';
+import { CarRentalService } from '../services/car-rental-service.service';
 
 @Component({
-  selector: 'app-reserve-order',
+  selector: 'app-rent-order',
   standalone: true,
   imports: [RouterLink, FormsModule, CommonModule, ReactiveFormsModule],
-  templateUrl: './reserve-order.component.html',
-  styleUrl: './reserve-order.component.scss'
+  templateUrl: './rent-order.component.html',
+  styleUrl: './rent-order.component.scss'
 })
-export class ReserveOrderComponent implements OnInit{
-
+export class RentOrderComponent {
   carId!:number;
-  reservationFee:number = 0;
-  reservationForm: FormGroup = new FormGroup({});
+  rentalFeePerDay:number = 0;
+  rentalDays:number = 1;
+  rentalForm: FormGroup = new FormGroup({});
   client?:Client;
   showForm1: boolean = true;
   isAllowed:boolean = true;
 
-
   constructor(
     private carService: CarService,
-    private carReservationService:CarReservationService,
+    private carRentalService:CarRentalService,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router
   ) {
     this.createForm();
   }
-  
+
+
   ngOnInit(): void {
     this.carId = +this.activatedRoute.snapshot.paramMap.get('id')!;
-    this.reservationFee = +this.activatedRoute.snapshot.paramMap.get('reservationFee')!;
+    this.rentalFeePerDay = +this.activatedRoute.snapshot.paramMap.get('rentalfeeperday')!;
    
   }
 
   createForm(){
-    this.reservationForm = new FormGroup({
+    this.rentalForm = new FormGroup({
     
         carId: new FormControl(this.carId),
         nationalId: new FormControl(this.client?.nationalId, [ Validators.required,
@@ -65,58 +67,58 @@ export class ReserveOrderComponent implements OnInit{
     });
   }
 
-  
+
 
   submitForm(){
-    this.reservationForm.markAllAsTouched();
-    if (this.reservationForm.valid) {
+    this.rentalForm.markAllAsTouched();
+    if (this.rentalForm.valid) {
       //check if user is allowed to reserve
      
-      this.carReservationService.isAllowedToReserve(this.reservationForm.controls['nationalId'].getRawValue()).subscribe({
+      this.carRentalService.isAllowedToRent(this.rentalForm.controls['nationalId'].getRawValue()).subscribe({
         next : r => {
           const isAllowed = r?.isAllowed; 
           if(isAllowed){
             this.showForm1 = false;
             this.client = {
-              nationalId: this.reservationForm.get('nationalId')?.value,
-              firstName: this.reservationForm.get('firstName')?.value,
-              lastName: this.reservationForm.get('lastName')?.value,
-              address: this.reservationForm.get('address')?.value,
-              email: this.reservationForm.get('email')?.value,
-              phone: this.reservationForm.get('phone')?.value,
+              nationalId: this.rentalForm.get('nationalId')?.value,
+              firstName: this.rentalForm.get('firstName')?.value,
+              lastName: this.rentalForm.get('lastName')?.value,
+              address: this.rentalForm.get('address')?.value,
+              email: this.rentalForm.get('email')?.value,
+              phone: this.rentalForm.get('phone')?.value,
             };
 
-            this.carReservationService.reserveCar(this.client, this.carId).subscribe({
+            this.carRentalService.rentCar(this.client, this.carId, this.rentalDays).subscribe({
               next: r => {
-                    if(r?.isAllowed)
-                       this.showSuccessMessage();
-                    else
-                    this.showErrorMessage(r?.message);
+                if(r?.isAllowed)
+                   this.showSuccessMessage();
+                else
+                  this.showErrorMessage(r?.message);
               },
               error: e => console.log(e)
             });
           }
+
           else{
             this.showErrorMessage(r?.message);
           }
         },
 
-        error: e => this.showErrorMessage(e.message)
+        error: e => console.log(e)
       
       })
 
-      //method
+      //if form is not valid
     } else {
-    
+         
     }
    
 
   }
- 
 
   showErrorMessage(message:string){
     Swal.fire({
-      title: 'Error!',
+      title: 'Sorry',
       text: message,
       icon: 'error',
       confirmButtonText: 'OK'
@@ -125,12 +127,14 @@ export class ReserveOrderComponent implements OnInit{
 
   showSuccessMessage(){
     Swal.fire({
-      title: 'Car is reserved successfully!',
+      title: 'Car is rented successfully!',
       text: 'Check your Email for futher Details!',
       icon: 'success',
       confirmButtonText: 'OK'
     });
   }
 
-  
+    
+
+
 }

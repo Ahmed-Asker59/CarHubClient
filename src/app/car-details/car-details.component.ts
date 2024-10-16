@@ -18,7 +18,6 @@ export class CarDetailsComponent implements OnInit{
   CarHubPhoneNumber:string = "01027488227";
 
   constructor(private carService:CarService, private activatedRoute:ActivatedRoute) {
-    
   }
   ngOnInit(): void {
    this.loadCar();
@@ -28,7 +27,7 @@ export class CarDetailsComponent implements OnInit{
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if(id)
       this.carService.getCar(+id).subscribe({
-       next: car => this.car = car,
+       next: car =>  this.car = car,
        error: error => console.log(error) 
     
       })

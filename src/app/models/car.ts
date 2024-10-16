@@ -8,6 +8,8 @@ export interface Car{
     imagePath:string;
     isAvailableForRental:boolean;
     isAvailableForReserve:boolean;
+    isReserved:boolean;
+    isRented:boolean;
     isDeleted:boolean;
     make:string;
     manufactureYear:number;
@@ -16,5 +18,6 @@ export interface Car{
     modelVariant:string;
     price:number;
     reservationFee:number;
+    rentalFeePerDay:number;
     transmission:string;
 }
