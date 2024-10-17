@@ -46,16 +46,25 @@
     margin-left: calc(-.5* var(--bs-gutter-x));
 }
 .button-primary {
+    display: block;
     color: #fff;
-    background-color: #212126;
+    background-color: #00476d;
     border-color: #212126;
     padding: .5rem 1rem; /* Adjust padding for height and width */
     font-size: 1.2rem; /* Increase font size */
-    border-radius: 5px; /* Optional: Increase for roundness */
+    border-radius: 10px; /* Optional: Increase for roundness */
     transition: background-color 0.3s ease; /* Smooth transition */
     cursor: pointer;
+    width: fit-content;
+    margin-top: 2rem;
 }
 
 a{
     text-decoration: none;
+}
+h1{
+    font-size: 3rem;
+    line-height: 4rem;
+    color: #000d19;
+    font-weight: 700;
 }

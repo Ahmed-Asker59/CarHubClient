@@ -20,28 +20,29 @@
       margin-bottom: 0; // Remove bottom margin to align all card texts
     }
 
-    // .details-button{
-    //   background-color: #1F487E;
-    //   display: flex;
-    //   justify-content: center;
-    //   padding: 10px 10px;
-    //   width: 70%;
-    //   color: #fff;
-    //   border-radius: 0 0 8px 8px;
-    //   text-align: center;
-    //   margin: 0 auto;
-    // }
+
+  .details-button{
+    background-color: #00476d;
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px;
+    width: 70%;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    margin: 0 auto;
+  }
 
 
 
 
 .details-button {
-  background-image: linear-gradient(#42A1EC, #0070C9);
-  width: 60%;
-  border: 1px solid #0077CC;
-  border-radius: 4px;
+  background-image: linear-gradient(#00476d, #00476d);
+  width: 90%;
+  border: 1px solid #008ea1;
+  border-radius: 12px;
   box-sizing: border-box;
-  color: #FFFFFF;
+  color: #e8eaed;
   cursor: pointer;
   direction: ltr;
   display: block;
@@ -68,14 +69,14 @@
 }
 
 .details-button:hover {
-  background-image: linear-gradient(#51A9EE, #147BCD);
-  border-color: #1482D0;
+  background-image: linear-gradient(#00476d, #008ea1);
+  border-color: #008ea1;
   text-decoration: none;
 }
 
 .details-button:active {
-  background-image: linear-gradient(#3D94D9, #0067B9);
-  border-color: #006DBC;
+  background-image: linear-gradient(#00476d, #008ea1);
+  border-color: #008ea1;
   outline: none;
 }
 
