@@ -31,6 +31,7 @@ export class CarService {
     if(carParams._pageSize) params = params.append("_pageSize",carParams._pageSize)
     if(carParams.carCondition) params = params.append("carCondition",carParams.carCondition)
     if(carParams.SearchValue) params = params.append("SearchValue",carParams.SearchValue)
+    if(carParams.transmission) params = params.append("transmission",carParams.transmission)
     return this.http.get<Pagination>(this.baseUrl+'cars',{params:params});
   }
 

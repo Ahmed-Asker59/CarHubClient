@@ -28,7 +28,7 @@
 
       <div class="mb-3">
         <label for="model" class="form-label">Colors</label>
-        <select class="form-select" id="model" [(ngModel)]="carparams.color" (change)="getCars()">
+        <select class="form-select" id="Colors" [(ngModel)]="carparams.color" (change)="getCars()">
           <option value="" disabled selected>Select Color</option>
           <option *ngFor="let color of FilterOptions.colors" [value]="color">{{ color }}</option>
         </select>
@@ -36,7 +36,7 @@
 
       <div class="mb-3">
         <label for="model" class="form-label">Fuel Types</label>
-        <select class="form-select" id="model" [(ngModel)]="carparams.fuel" (change)="getCars()">
+        <select class="form-select" id="Fuel Types" [(ngModel)]="carparams.fuel" (change)="getCars()">
           <option value="" disabled selected>Select FuelTypes</option>
           <option *ngFor="let fuel of FilterOptions.fuelTypes" [value]="fuel">{{ fuel }}</option>
         </select>
@@ -44,7 +44,7 @@
 
       <div class="mb-3">
         <label for="model" class="form-label">Model Variants</label>
-        <select class="form-select" id="model" [(ngModel)]="carparams.fuel" (change)="getCars()">
+        <select class="form-select" id="Model Variants" [(ngModel)]="carparams.fuel" (change)="getCars()">
           <option value="" disabled selected>Select ModelVariants</option>
           <option *ngFor="let modelVariant of FilterOptions.modelVariants" [value]="modelVariant">{{ modelVariant }}</option>
         </select>
@@ -52,16 +52,16 @@
 
       <div class="mb-3">
         <label for="model" class="form-label">Car Conditions</label>
-        <select class="form-select" id="model" [(ngModel)]="carparams.carCondition" (change)="getCars()">
-          <option value="" disabled selected>Select CarConditions</option>
+        <select class="form-select" id="Car Conditions" [(ngModel)]="carparams.carCondition" (change)="getCars()">
+          <option value="" disabled selected >Select Car Conditions</option>
           <option *ngFor="let carCondition of FilterOptions.carConditions" [value]="carCondition">{{ carCondition }}</option>
         </select>
       </div>
 
       <div class="mb-3">
         <label for="model" class="form-label">Transmissions</label>
-        <select class="form-select" id="model" [(ngModel)]="carparams.transmission" (change)="getCars()">
-          <option value="" disabled selected>Select Transmissions</option>
+        <select class="form-select" id="Transmissions" [(ngModel)]="carparams.transmission" (change)="getCars()">
+          <option value="" disabled selected >Select Transmissions</option>
           <option *ngFor="let transmission of FilterOptions.transmissions" [value]="transmission">{{ transmission }}</option>
         </select>
       </div>
@@ -85,7 +85,7 @@
         </div>
       </div>
 
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 my-4">
+      <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 my-4">
         <div class="col" *ngFor="let item of carlist">
           <div class="card h-100">
             <img [src]="item.imagePath" 
@@ -103,7 +103,81 @@
             <button class="btn details-button "   [routerLink]="['/details', item.id]">Details</button>
           </div>
         </div>
+      </div> -->
+
+      <div class="row g-4">
+        <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let item of carlist">
+            <div class="blog-item">
+                <div class="blog-img">
+                    <img [src]="item.imagePath" class="img-fluid rounded-top w-100" alt="Image">
+                </div>
+                <div class="blog-content rounded-bottom p-4">
+                  <h4 class="">{{ item.name }}</h4>       
+                  <h4 class=" py-2 px-4 mb-2" style="color: #FF6500;">{{ item.price | currency }}</h4> 
+                  <div class="row gy-2 gx-0 text-center mb-4">
+                    <div class="col-6 d-flex flex-column border-end border-white">
+                        <i class="fa fa-car " ></i>
+                        <span class="text-body ms-1">{{ item.transmission }}</span>
+                    </div>
+                    <div class="col-6 d-flex flex-column border-end border-white">
+                      <i class="fa-solid fa-gas-pump text-dark" ></i>
+                      <span class="text-body ms-1">{{ item.fuel }}</span>
+                    </div>
+                
+                    <div class="col-6 d-flex flex-column border-end border-white ">
+                        <i class="fa fa-car " ></i>
+                        <span class="text-body ms-1">{{ item.manufactureYear }}</span>
+                    </div>
+                    <div class="col-6 d-flex flex-column">
+                        <i class="fa fa-road " ></i>
+                        <span class="text-body ms-1">{{ item.mileage }} K</span>
+                    </div>
+                </div>
+                  <button class="btn details-button "   [routerLink]="['/details', item.id]">Details</button>
+                </div>
+            </div>
+        </div>
       </div>
+
+
+
+      <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 my-4">
+        <div class="categories-item p-4" *ngFor="let item of carlist">
+            <div class="categories-item-inner">
+                <div class="categories-img rounded-top overflow-hidden">
+                    <img [src]="item.imagePath" class="img-fluid w-100 rounded-top" alt="{{ item.name }}">
+                </div>
+                <div class="categories-content rounded-bottom p-4">
+                    <h4 class="">{{ item.name }}</h4>        
+                    <div class="mb-4">
+                        <h4 class="bg-white text-primary rounded-pill py-2 px-4 mb-0">{{ item.price | currency }}</h4>
+                    </div>
+                    
+                    <div class="row gy-2 gx-0 text-center mb-4">
+                        <div class="col-4 border-end border-white">
+                            <i class="fa fa-car text-dark"></i>
+                            <span class="text-body ms-1">{{ item.transmission }}</span>
+                        </div>
+                        <div class="col-4 border-end border-white">
+                            <i class="fa fa-gas text-dark"></i>
+                            <span class="text-body ms-1">{{ item.fuel }}</span>
+                        </div>
+                        <div class="col-4 border-end border-white">
+                            <i class="fa-solid fa-calendar-alt text-dark"></i>
+                            <span class="text-body ms-1">{{ item.manufactureYear }}</span>
+                        </div>
+                        <div class="col-4">
+                            <i class="fa-solid fa-road text-dark"></i>
+                            <span class="text-body ms-1">{{ item.mileage }}</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary details-button w-100" [routerLink]="['/details', item.id]">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
 
       <pagination class="d-flex justify-content-center mt-3"
                   [itemsPerPage]="carparams._pageSize"
