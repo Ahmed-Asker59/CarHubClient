@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container-fluid px-1 py-5 mx-auto" *ngIf="showForm1; else form2Template">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
@@ -6,7 +7,7 @@
                 <div class="inqueries-box fw-bolder">                 
                  <div>   
                     <i class="bi bi-check-circle-fill"></i>
-                    Secure your vehicle with a fully refundable {{reservationFee}} deposit today.
+                    Secure your vehicle with a fully refundable {{reservationFee | currency}} deposit today.
                  </div>
 
                 
@@ -89,7 +90,7 @@
                             </div> 
                         </div>
                         <div class="row justify-content-center mt-4">
-                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block fw-bold Request-btn">Apply For A Reserve Service</button> </div>
+                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block fw-bold Request-btn" >Apply For A Reserve Service</button> </div>
                         </div>
                     </form>
                 </div>
@@ -103,34 +104,313 @@
 
 
 
-<ng-template #form2Template>
-    <div class="container-fluid px-1 py-5 mx-auto" >
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                    <h3>Request A Reserve Service</h3>
-                    <p class="blue-text">Just answer a few questions<br> so that we can personalize the right experience for you.</p>
-                    <div class="card">
-                        <h5 class="text-center mb-4">Enter your personal details</h5>
-                        <form [formGroup]="reservationForm" class="form-card"  (ngSubmit)="submitForm()">
-                            <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Enter your first name" onblur="validate(1)"> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(2)"> </div>
-                            </div>
-                            <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> <input type="text" id="mob" name="mob" placeholder="" onblur="validate(4)"> </div>
-                            </div>
-                            <div class="row justify-content-between text-left">
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label> <input type="text" id="job" name="job" placeholder="" onblur="validate(5)"> </div>
-                                <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">National ID<span class="text-danger"> *</span></label> <input type="text" id="ans" name="ans" placeholder="" onblur="validate(6)"> </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="form-group col-sm-6"> <button type="submit" class="btn-block fw-bold Request-btn">Apply For A Reserve Service</button> </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    </div>
+<!-- <ng-template #form2Template>
     
+    <div class="credit-container d-flex justify-content-center mt-5 mb-5">
+        <div class="row g-3">
+
+          <div class="col-md-6">  
+            <div class="card">
+
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header p-0">
+                    <h2 class="mb-0">
+                      <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="d-flex align-items-center justify-content-between">
+
+                          <span>Credit card</span>
+                          <div class="icons">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                            <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                            <img src="https://i.imgur.com/35tC99g.png" width="30">
+                            <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                          </div>
+                          
+                        </div>
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body payment-card-body">
+                      
+                      <span class="font-weight-normal card-text">Card Number</span>
+                      <div class="input">
+
+                        <i class="fa fa-credit-card"></i>
+                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                        
+                      </div> 
+
+                      <div class="row mt-3 mb-3">
+
+                        <div class="col-md-6">
+
+                          <span class="font-weight-normal card-text">Expiry Date</span>
+                          <div class="input">
+
+                            <i class="fa fa-calendar"></i>
+                            <input type="text" class="form-control" placeholder="MM/YY">
+                            
+                          </div> 
+                          
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                          <span class="font-weight-normal card-text">CVC/CVV</span>
+                          <div class="input">
+
+                            <i class="fa fa-lock"></i>
+                            <input type="text" class="form-control" placeholder="000">
+                            
+                          </div> 
+                          
+                        </div>
+                        
+
+                      </div>
+
+                      <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+                     
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            
+              <div class="card">
+                
+                <div class="p-3 fw-bold">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Order Summary <i class="bi bi-list"></i></span>
+                                   
+                    </div>
+                  </div>
+                  <hr class="mt-0 line">
+                <div class="d-flex justify-content-between p-3">
+                  <div class="d-flex flex-column ">
+                    <span>Total Value <i class="bi bi-cash-stack"></i></span>                   
+                  </div>
+                  <div class="mt-1">
+                    <sup class="super-price">{{reservationFee | currency}}</sup>
+                  </div>
+                  
+                </div>
+
+                <hr class="mt-0 line">
+                <div class="p-3">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>Reserve Duration <i class="fa fa-clock-o"></i></span>
+                    <span>3 days</span>                  
+                  </div>
+                </div>
+
+                <hr class="mt-0 line">
+                <div class="p-3">
+
+                <button class="btn btn-primary btn-block free-button">Submit Order <i class="bi bi-check-circle"></i></button> 
+                  
+                </div>
+
+
+
+                
+              </div>
+          </div>
+          
+        </div>
+        
+
+      </div>
+
+</ng-template> -->
+<ng-template #form2Template>
+    
+    <div class="credit-container d-flex justify-content-center mt-2 mb-5">
+        <div class="row g-3">
+
+          <div class="col-md-6">  
+            <div class="card">
+
+              <div class="accordion" id="accordionExample">
+                <div class="second-card">
+                  <div class="p-0">
+                    <img src="{{car?.imagePath}} " width="510px" class="img-fluid rounded">
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+                        <div class="row m-0 bg-light car-details mt-2">
+                            <div class="col-md-4 col-6 ps-30 pe-0 my-4">
+                                <p class="text-muted">Mileage</p>
+                                <p class="h5">{{car?.mileage}}<span class="ps-1">m</span></p>
+                            </div>
+                            <div class="col-md-4 col-6  ps-30 my-4">
+                                <p class="text-muted">Transmission</p>
+                                <p class="h5 m-0 transmission-text">{{car?.transmission}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 ps-30 my-4">
+                                <p class="text-muted">Fuel</p>
+                                <p class="h5 m-0">{{car?.fuel}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 ps-30 my-4">
+                                <p class="text-muted">Body</p>
+                                <p class="h5 m-0">{{car?.modelVariant}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 ps-30 my-4">
+                                <p class="text-muted">Color</p>
+                                <p class="h5 m-0">{{car?.color}}</p>
+                            </div>
+                            <div class="col-md-4 col-6 ps-30 my-4">
+                                <p class="text-muted">Year</p>
+                                <p class="h5 m-0">{{car?.manufactureYear}}</p>
+                            </div>
+                        </div>                  
+
+                  </div>
+                </div>
+                
+              </div>
+              
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            
+              <div class="card">
+                    <div class="card-header p-0">
+                      <h2 class="mb-0">
+                        <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <div class="d-flex align-items-center justify-content-between">
+  
+                            <span>Credit card</span>
+                            <div class="icons">
+                              <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                              <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                              <img src="https://i.imgur.com/35tC99g.png" width="30">
+                              <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                            </div>
+                            
+                          </div>
+                        </button>
+                      </h2>
+                    </div>
+  
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                     <form [formGroup]="paymentForm"   (ngSubmit)="submitForm2()">
+                      <div class="card-body payment-card-body">
+                        <span class="font-weight-normal card-text">Name on card</span>
+                        <div class="input">
+  
+                          <i class="bi bi-pencil"></i>
+                          <input  formControlName="nameOnCard" type="text" class="form-control" >
+                          <div *ngIf="paymentForm.get('nameOnCard')?.touched && paymentForm.get('nameOnCard')?.invalid" class="text-danger">
+                            <small *ngIf="paymentForm.get('nameOnCard')?.errors?.['required']">
+                                Name on card is required.
+                            </small>
+                            <small *ngIf="paymentForm.get('nameOnCard')?.errors?.['pattern']">
+                              cannot include any digits.
+                            </small>
+                
+                          </div> 
+                          
+                        </div> 
+                        <span class="font-weight-normal card-text">Card Number</span>
+                        <div class="input">
+  
+                          <i class="fa fa-credit-card"></i>
+                          <div #cardNumber  class="form-control stripe-input" > </div>
+                          
+                        </div> 
+  
+                        <div class="row mt-3 mb-3">
+  
+                          <div class="col-md-6">
+  
+                            <span class="font-weight-normal card-text">Expiry Date</span>
+                            <div class="input">
+  
+                              <i class="fa fa-calendar"></i>
+                              <div #cardExpiry  class="form-control stripe-input"  placeholder="MM/YY" > </div>
+                              
+                            </div> 
+                            
+                          </div>
+  
+  
+                          <div class="col-md-6">
+  
+                            <span class="font-weight-normal card-text">CVC/CVV</span>
+                            <div class="input">
+  
+                              <i class="fa fa-lock"></i>
+                              <div #cardCvc  class="form-control stripe-input" > </div>
+                              
+                            </div> 
+                            
+                          </div>
+                          
+  
+                        </div>
+  
+                        <span class="text-muted certificate-text"><i class="fa fa-lock"></i> Your transaction is secured with ssl certificate</span>
+                       
+                      </div>
+                      <span class="text-danger">{{cardErrors}}</span>
+                     </form>
+                    </div>
+                 
+                <div class="p-3 fw-bold">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Order Summary <i class="bi bi-list"></i></span>
+                                   
+                    </div>
+                  </div>
+                  <hr class="mt-0 line">
+                <div class="d-flex justify-content-between p-3">
+                  <div class="d-flex flex-column ">
+                    <span>Total Value <i class="bi bi-cash-stack"></i></span>                   
+                  </div>
+                  <div class="mt-1">
+                    <sup class="super-price">{{reservationFee | currency}}</sup>
+                  </div>
+                  
+                </div>
+
+                <hr class="mt-0 line">
+                <div class="p-3">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>Reserve Duration <i class="fa fa-clock-o"></i></span>
+                    <span>3 days</span>                  
+                  </div>
+                </div>
+
+                <hr class="mt-0 line">
+                <div class="p-3">
+
+                <button class="btn btn-primary btn-block free-button" type="submit" (click)="submitForm2()">Confirm Order <i class="bi bi-check-circle"></i></button> 
+                  
+                </div>
+
+
+
+                
+              </div>
+          </div>
+          
+        </div>
+        
+
+      </div>
+
 </ng-template>

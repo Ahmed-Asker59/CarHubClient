@@ -33,11 +33,11 @@
         <div class="card-text fw-bolder fs-3 mt-3">
             Purchase for {{car.price | currency}}
         </div>
-        <div class="reserve" *ngIf="!car.isReserved && !car.isRented">
+        <div class="reserve" *ngIf="!car.isReserved && !car.isRented && car.isAvailableForReserve">
           <a  href="/reserve" [routerLink]="['/reserve', car.id, car.reservationFee]" class="reserve-button fw-bold mt-3"> Reserve Now For {{car.reservationFee | currency}}</a>
           
         </div>
-        <div class="rent" *ngIf="!car.isRented && !car.isReserved">
+        <div class="rent" *ngIf="!car.isRented && !car.isReserved && car.isAvailableForRental">
           <a  href="/rent" [routerLink]="['/rent', car.id, car.rentalFeePerDay]" class="rental-button fw-bold mt-3"> Rent Now For {{car.rentalFeePerDay | currency}} Per Day</a>
           
         </div>
