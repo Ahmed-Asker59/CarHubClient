@@ -1,0 +1,29 @@
+
+ <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet"> 
+
+<div class="form-container">
+    <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+              <div class="login">
+				<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-content">
+					
+                        <label class="login-label">Log in</label>
+ 
+					<input formControlName="email" type="email" name="email" placeholder="Email" >
+					<div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="text-danger">
+						<small *ngIf="loginForm.get('email')?.errors?.['required']">
+						  email is required
+						</small>
+					  </div>
+					<input formControlName="password" type="password" name="pswd" placeholder="Password">
+					<div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-danger">
+						<small *ngIf="loginForm.get('password')?.errors?.['required']">
+						  password is required
+						</small>
+					  </div>
+					<button [disabled]="loginForm.invalid" type="submit">Sign In</button>
+				</form>
+			</div> 
+	 
+	</div>
+</div>
