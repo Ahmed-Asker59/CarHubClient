@@ -7,10 +7,11 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class CarReservationService   {
-
+  baseUrl = "http://localhost:5151/api/Reservation/";
+  
   constructor(public http:HttpClient) { }
  
-  baseUrl = "http://localhost:5151/api/Reservation/";
+  
 
   getReservationFee(id:number){
 

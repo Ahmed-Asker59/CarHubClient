@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { OurbrandsComponent } from "./ourbrands/ourbrands.component";
 import { FooterComponent } from './footer/footer.component';
+import { AccountService } from './services/account.service';
 
 
 @Component({
@@ -21,14 +22,20 @@ export class AppComponent implements OnInit{
  
   cars:any[] = []
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private accountService:AccountService) {
     
     
   }
   ngOnInit(): void {
     
   }
+ 
+  loadCurrentUser(){
+    const token = localStorage.getItem('token');
+    console.log(token);
 
+    if(token) this.accountService.loadCurrentUser(token).subscribe();
+  }
 
 
 }

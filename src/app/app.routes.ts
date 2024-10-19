@@ -8,6 +8,9 @@ import { MercedesComponent } from './mercedes/mercedes.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { ReserveOrderComponent } from './reserve-order/reserve-order.component';
 import { RentOrderComponent } from './rent-order/rent-order.component';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
+import { SidebarComponent } from './Dashboard/sidebar/sidebar.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -19,6 +22,12 @@ export const routes: Routes = [
     {path:"mercedes",component:MercedesComponent},
     {path:"details/:id", component:CarDetailsComponent},
     {path:"reserve/:id/:reservationFee", component:ReserveOrderComponent},
-    {path:"rent/:id/:rentalfeeperday", component: RentOrderComponent}
+    {path:"rent/:id/:rentalfeeperday", component: RentOrderComponent},
+    {path:"login", component: LoginComponent},
+    {path:"register", component: RegisterComponent},
+    {path:"dashboard", component: SidebarComponent}
+
+
+
     
 ]

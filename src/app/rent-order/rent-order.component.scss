@@ -29,3 +29,137 @@ button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !importan
     flex-direction: column;
     align-items: start;
 }
+
+
+.credit-container{
+
+    height: 100vh;
+  
+   }
+  
+  .credit-container .card{
+      border: none;
+     }
+  
+  .credit-container second-card {
+      width: 70%;
+  
+  }
+  .credit-container second-card card-header{
+      background-color: white !important;
+  
+     }
+  .credit-container card-header {
+      padding: .5rem 1rem;
+      margin-bottom: 0;
+      background-color: rgba(0,0,0,.03);
+      border-bottom: none;
+  }
+  
+  .credit-container btn-light:focus {
+      color: #212529;
+      background-color: #e2e6ea;
+      border-color: #dae0e5;
+      box-shadow: 0 0 0 0.2rem rgba(216,217,219,.5);
+  }
+  
+  
+  .credit-container .form-control{
+  
+      height: 50px !important;
+      border: 2px solid #eee  !important;
+      border-radius: 6px  !important;
+      font-size: 14px  !important;
+    }
+  
+  .credit-container .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #039be5;
+      outline: 0;
+      box-shadow: none;
+  
+  }
+  
+  .credit-container .input{
+  
+    position: relative  !important;
+  }
+  
+  .credit-container .input i{
+  
+      position: absolute  !important;
+      top: 16px  !important;
+      left: 11px  !important;
+      color: #989898  !important;
+  }
+  
+  .credit-container .input input{
+  
+    text-indent: 25px  !important;
+  }
+  
+  .credit-container .card-text{
+  
+    font-size: 13px;
+    margin-left: 6px;
+  }
+  
+  .credit-container .certificate-text{
+  
+    font-size: 12px;
+  }
+  
+   
+  .credit-container .billing{
+    font-size: 11px;
+  }  
+  
+  .credit-container .super-price{
+  
+      top: 0px;
+      font-size: 22px;
+  }
+  
+  .credit-container .super-month{
+  
+      font-size: 11px;
+  }
+  
+  
+  .credit-container .line{
+    color: #bfbdbd;
+  }
+  
+  .credit-container .free-button{
+  
+      background: #1565c0;
+      height: 52px;
+      font-size: 15px;
+      border-radius: 8px;
+  }
+  
+  
+  .credit-container .payment-card-body{
+  
+    flex: 1 1 auto;
+    padding: 20px 1rem !important;
+  
+  }
+  
+  .car-details{
+      width: 430px;
+  }
+  
+  .stripe-input {
+      padding-left: 40px; 
+      padding-top: 12px;/* Push input content to the right to avoid overlap */
+      width: 100%;
+    }
+
+  .transmission-text {
+        white-space: nowrap !important;        /* Prevents wrapping */
+        overflow: hidden !important;           /* Hides overflow */
+        text-overflow: ellipsis !important;    /* Adds ellipsis for overflowed text */
+    }
+    
