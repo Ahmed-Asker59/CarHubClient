@@ -1,5 +1,12 @@
 body{color: #000;overflow-x: hidden;height: 100%;background-image: url("https://i.imgur.com/GMmCQHC.png");background-repeat: no-repeat;background-size: 100% 100%}
-.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}
+.card{
+  padding: 30px 25px !important;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: none !important;
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)
+}
+
 .blue-text{color: #00BCD4}
 .form-control-label{margin-bottom: 0}
 input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}
@@ -27,22 +34,16 @@ button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !importan
     display: flex;
     flex-direction: column;
     align-items: start;
+    
 }
-
-
-.credit-container{
-
-  height: 100vh;
-
- }
 
 .credit-container .card{
     border: none;
-   }
+  }
 
 .credit-container second-card {
     width: 70%;
-
+  
 }
 .credit-container second-card card-header{
     background-color: white !important;
@@ -143,6 +144,7 @@ button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !importan
 
   flex: 1 1 auto;
   padding: 20px 1rem !important;
+  padding-bottom: 20px !important; 
 
 }
 
