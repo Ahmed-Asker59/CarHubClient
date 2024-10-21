@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { User } from '../models/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 export class AccountService {
   baseUrl = "http://localhost:5151/api/Account/";
   private currentUserSource = new BehaviorSubject<User | null>(null);
-  currentUser = this.currentUserSource.asObservable();
+  currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, private router:Router)
    {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token');
       if (token) {
+        console.log(token);
         this.loadCurrentUser(token).subscribe(); // Subscribe to load the user
       }
     }
@@ -33,7 +34,8 @@ export class AccountService {
     map(user => {
       localStorage.setItem('token',user.token);
       this.currentUserSource.next(user);
-      console.log(localStorage.getItem('token'))
+     
+    
     })
 
    )
@@ -52,7 +54,13 @@ export class AccountService {
     )
   }
 
+  isAuthenticated(): boolean {
+    if (typeof window !== 'undefined' && localStorage.getItem('token')) {
+      return true; // User is authenticated
+    }
+    return false;
 
+  }
   
   login(values:any){
     return this.http.post<User>(this.baseUrl + 'login', values).pipe(

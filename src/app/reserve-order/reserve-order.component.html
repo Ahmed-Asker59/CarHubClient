@@ -396,7 +396,10 @@
                 <hr class="mt-0 line">
                 <div class="p-3">
 
-                <button class="btn btn-primary btn-block free-button" type="submit" (click)="submitForm2()">Confirm Order <i class="bi bi-check-circle"></i></button> 
+                <button  [disabled]="isProcessing" class="btn btn-primary btn-block free-button" type="submit" (click)="submitForm2()">
+                  <span *ngIf="!isProcessing">Submit  <i class="bi bi-check-circle"></i></span>
+                 <span *ngIf="isProcessing">Processing...</span>
+                </button> 
                   
                 </div>
 

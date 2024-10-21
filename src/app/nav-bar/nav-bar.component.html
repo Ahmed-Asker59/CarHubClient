@@ -22,12 +22,12 @@
           <li class="nav-item">
             <a class="nav-link text-white fw-medium" routerLinkActive="active" routerLink="/contactus" tabindex="-1">Contact Us</a>
           </li>
-          <ng-container *ngIf="(accountService.currentUser | async ) == null">
+          <ng-container *ngIf="(accountService.currentUser$ | async ) == null">
             <li class="nav-item staff-link">
               <a class="nav-link text-white fw-medium text-white fw-medium  " routerLinkActive="active" routerLink="login" >Staff </a>
             </li>
           </ng-container>
-          <ng-container *ngIf="(accountService.currentUser | async ) as User">
+          <ng-container *ngIf="(accountService.currentUser$ | async ) as User">
          
             <li class="nav-item staff-link"> <a class="nav-link text-white fw-medium ">Welcome, {{User.displayName}} </a></li>
           <li class="nav-item  "> <a (click)="accountService.logout()" class="nav-link text-white fw-medium ">Log out</a></li>
