@@ -1,0 +1,32 @@
+.box {
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    margin: 10px; /* Space outside the box */
+    background-color: #f9f9f9; /* Background color */
+    transition: box-shadow 0.3s; /* Smooth transition for hover effect */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.box:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.icon {
+    font-size: 24px; /* Icon size */
+    margin-bottom: 10px; /* Space between icon and text */
+}
+
+.text {
+    font-weight: bold; /* Make text bold */
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.content{
+    flex-grow: 1;
+}
