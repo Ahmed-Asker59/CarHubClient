@@ -10,7 +10,6 @@ import { DelayedRentalDTO } from '../models/DelayedRentalDTO';
 import { ReservationDTO } from '../models/ReservationDTO';
 import {FormsModule} from '@angular/forms';
 import Swal from 'sweetalert2';
-import { CacheService } from '../services/cacheservice.service';
 
 
 
@@ -46,10 +45,10 @@ export class ReportViewerComponent implements OnInit {
         console.log(this.selectedReport);
       }
       else {
-        // If no type is specified, reset to default state (show buttons)
-        this.selectedReport = ''; 
-        this.hasFetchedRentals = false; 
-      }
+      // If no type is specified, reset to default state (show buttons)
+      this.selectedReport = ''; // Resetting selected report
+      this.hasFetchedRentals = false; // Reset rentals state if needed
+    }
     });
   }
 
@@ -178,32 +177,4 @@ private formatDate(date: any): string {
 }
 
 
-  // Method to export table to PDF
-  // exportToPDF() {
-  //   const data = document.getElementById('pdfTable'); // Use the ID of the table you want to export
-  //   if (data) {
-  //     html2canvas(data).then(canvas => {
-  //       const imgData = canvas.toDataURL('image/png');
-  //       const pdf = new jsPDF();
-  //       const imgWidth = 190; // Set width according to your requirement
-  //       const pageHeight = pdf.internal.pageSize.height;
-  //       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-  //       let heightLeft = imgHeight;
-
-  //       let position = 0;
-
-  //       pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-  //       heightLeft -= pageHeight;
-
-  //       while (heightLeft >= 0) {
-  //         position = heightLeft - imgHeight;
-  //         pdf.addPage();
-  //         pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-  //         heightLeft -= pageHeight;
-  //       }
-
-  //       pdf.save('table.pdf');
-  //     });
-  //   }
-  // }
 }

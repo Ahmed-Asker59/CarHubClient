@@ -5,6 +5,5 @@ export interface RentalDto{
     clientPhone:number
     endDate:Date
     rentalDate:Date
-    rentalPrice:number
-    
+    rentalPrice:number   
 }

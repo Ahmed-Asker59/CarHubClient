@@ -1,117 +1,129 @@
-<div class="container">
+<div class="container container-cust">
     <div *ngIf="selectedReport === 'Rentals'">
-        <h4>Rental Information:</h4>
-        <div class="form-group mx-2">
-            <label for="dateFrom">From Date:</label>
-            <input type="date" id="dateFrom" [(ngModel)]="dateFrom" class="form-control form-control-sm" />
+        <h4>Rentals Information:</h4>
+        <div class="calender-box">
+            <div class="calender d-flex">
+                <div class="form-group mx-2">
+                <label for="dateFrom">From Date:</label>
+                <input type="date" id="dateFrom" [(ngModel)]="dateFrom" class="form-control form-control-sm custom-input" />
+                </div>
+                <div class="form-group mx-2">
+                <label for="dateTo">To Date:</label>
+                <input type="date" id="dateTo" [(ngModel)]="dateTo" class="form-control form-control-sm custom-input" />
+                </div>
+            </div>  
+            <button (click)="GetRentals()" class="btn btn-primary my-3 mx-2 getrentals">Get Rentals</button>    
         </div>
-        <div class="form-group mx-2">
-            <label for="dateTo">To Date:</label>
-            <input type="date" id="dateTo" [(ngModel)]="dateTo" class="form-control form-control-sm" />
+        <div class="content">
+            <div *ngIf="hasFetchedRentals && rentals.length === 0" class="alert alert-warning font-weight-bold text-center">
+                No Rentals Exist
+            </div>
+            <div class="text-end">
+                <button (click)="exportToPDF()" *ngIf="hasFetchedRentals && rentals.length > 0" class="exportToPDF btn btn-primary my-3 mx-2">Export to PDF</button>
+            </div>
+            <table *ngIf="hasFetchedRentals && rentals.length > 0" id="pdfTable" class="table table-hover table-active">
+                <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Client Name</th>
+                        <th>Client Phone</th>
+                        <th>Car</th>
+                        <th>Rental Date</th>
+                        <th>End Date</th>
+                        <th>Rental Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rental of rentals">
+                        <td>{{ rental.clientID }}</td>
+                        <td>{{ rental.clientName }}</td>
+                        <td>{{ rental.clientPhone }}</td>
+                        <td>{{ rental.car }}</td>
+                        <td>{{ rental.rentalDate | date:'shortDate' }}</td>
+                        <td>{{ rental.endDate | date:'shortDate' }}</td>
+                        <td>{{ rental.rentalPrice | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <button (click)="GetRentals()" class="btn btn-primary my-3 mx-2">Get Rentals</button>
-        <div *ngIf="hasFetchedRentals && rentals.length === 0" class="alert alert-warning font-weight-bold text-center">
-            No Rentals Exist
-        </div>
-        <div class="text-end">
-            <button (click)="exportToPDF()" *ngIf="hasFetchedRentals && rentals.length > 0" class="btn btn-primary my-3 mx-2">Export to PDF</button>
-        </div>
-        <table *ngIf="hasFetchedRentals && rentals.length > 0" id="pdfTable" class="table table-striped table-active table-responsive table-hover">
-            <thead>
-                <tr>
-                    <th>Client ID</th>
-                    <th>Client Name</th>
-                    <th>Client Phone</th>
-                    <th>Car</th>
-                    <th>Rental Date</th>
-                    <th>End Date</th>
-                    <th>Rental Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let rental of rentals">
-                    <td>{{ rental.clientID }}</td>
-                    <td>{{ rental.clientName }}</td>
-                    <td>{{ rental.clientPhone }}</td>
-                    <td>{{ rental.car }}</td>
-                    <td>{{ rental.rentalDate | date:'shortDate' }}</td>
-                    <td>{{ rental.endDate | date:'shortDate' }}</td>
-                    <td>{{ rental.rentalPrice | currency }}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
     <!-- Repeat similar structure for Delayed Rentals and Reservations -->
     <div *ngIf="selectedReport === 'DelayedRentals'">
         <h4>Delayed Rentals Information:</h4>
-        <div *ngIf="delayedRentals.length === 0" class="alert alert-warning font-weight-bold text-center">
-            No Delayed Rentals Exist
+        <div class="content">
+
+            <div *ngIf="delayedRentals.length === 0" class="alert alert-warning font-weight-bold text-center">
+                No Delayed Rentals Exist
+            </div>
+            <div class="text-end">
+                <button (click)="exportToPDF()" *ngIf="delayedRentals.length > 0" class="exportToPDF btn btn-primary my-3 mx-2">Export to PDF</button>
+            </div>
+            <table id="pdfTable" *ngIf="delayedRentals.length > 0" class="table table-striped table-active table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Client Name</th>
+                        <th>Client Phone</th>
+                        <th>Car</th>
+                        <th>Rental Date</th>
+                        <th>End Date</th>
+                        <th>Rental Price</th>
+                        <th>Delay In Days</th>
+                        <th>Actual Return Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let delayedRental of delayedRentals">
+                        <td>{{ delayedRental.clientID }}</td>
+                        <td>{{ delayedRental.clientName }}</td>
+                        <td>{{ delayedRental.clientPhone }}</td>
+                        <td>{{ delayedRental.car }}</td>
+                        <td>{{ delayedRental.rentalDate | date:'shortDate' }}</td>
+                        <td>{{ delayedRental.endDate | date:'shortDate' }}</td>
+                        <td>{{ delayedRental.rentalPrice | currency }}</td>
+                        <td>{{ delayedRental.delayInDays }}</td>
+                        <td>{{ delayedRental.actualReturnDate | date:'shortDate' }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="text-end">
-            <button (click)="exportToPDF()" *ngIf="delayedRentals.length > 0" class="btn btn-primary my-3 mx-2">Export to PDF</button>
-        </div>
-        <table id="pdfTable" *ngIf="delayedRentals.length > 0" class="table table-striped table-active table-responsive table-hover">
-            <thead>
-                <tr>
-                    <th>Client ID</th>
-                    <th>Client Name</th>
-                    <th>Client Phone</th>
-                    <th>Car</th>
-                    <th>Rental Date</th>
-                    <th>End Date</th>
-                    <th>Rental Price</th>
-                    <th>Delay In Days</th>
-                    <th>Actual Return Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let delayedRental of delayedRentals">
-                    <td>{{ delayedRental.clientID }}</td>
-                    <td>{{ delayedRental.clientName }}</td>
-                    <td>{{ delayedRental.clientPhone }}</td>
-                    <td>{{ delayedRental.car }}</td>
-                    <td>{{ delayedRental.rentalDate | date:'shortDate' }}</td>
-                    <td>{{ delayedRental.endDate | date:'shortDate' }}</td>
-                    <td>{{ delayedRental.rentalPrice | currency }}</td>
-                    <td>{{ delayedRental.delayInDays }}</td>
-                    <td>{{ delayedRental.actualReturnDate | date:'shortDate' }}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
     <div *ngIf="selectedReport === 'Reservations'">
         <h4>Reservations Information:</h4>
-        <div *ngIf="reservations.length === 0" class="alert alert-warning font-weight-bold text-center">
-            No Reservations Exist
+        <div class="content">
+
+            <div *ngIf="reservations.length === 0" class="alert alert-warning font-weight-bold text-center">
+                No Reservations Exist
+            </div>
+            <div class="text-end">
+                <button (click)="exportToPDF()" *ngIf="reservations.length > 0" class="exportToPDF btn btn-primary my-3 mx-2">Export to PDF</button>
+            </div>
+            <table id="pdfTable" *ngIf="reservations.length > 0" class="table table-striped table-active table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>Client Name</th>
+                        <th>Client Phone</th>
+                        <th>Car</th>
+                        <th>Reservation Fee</th>
+                        <th>Reservation Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let reservation of reservations">
+                        <td>{{ reservation.clientID }}</td>
+                        <td>{{ reservation.clientName }}</td>
+                        <td>{{ reservation.clientPhone }}</td>
+                        <td>{{ reservation.car }}</td>
+                        <td>{{ reservation.reservationFee | currency}}</td>
+                        <td>{{ reservation.reservationDate | date:'shortDate' }}</td>
+                        <td>{{ reservation.endDate | date:'shortDate' }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="text-end">
-            <button (click)="exportToPDF()" *ngIf="reservations.length > 0" class="btn btn-primary my-3 mx-2">Export to PDF</button>
-        </div>
-        <table id="pdfTable" *ngIf="reservations.length > 0" class="table table-striped table-active table-responsive table-hover">
-            <thead>
-                <tr>
-                    <th>Client ID</th>
-                    <th>Client Name</th>
-                    <th>Client Phone</th>
-                    <th>Car</th>
-                    <th>Reservation Fee</th>
-                    <th>Reservation Date</th>
-                    <th>End Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let reservation of reservations">
-                    <td>{{ reservation.clientID }}</td>
-                    <td>{{ reservation.clientName }}</td>
-                    <td>{{ reservation.clientPhone }}</td>
-                    <td>{{ reservation.car }}</td>
-                    <td>{{ reservation.reservationFee | currency}}</td>
-                    <td>{{ reservation.reservationDate | date:'shortDate' }}</td>
-                    <td>{{ reservation.endDate | date:'shortDate' }}</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 </div>

@@ -1,3 +1,17 @@
+.container-cust{
+    background-color: #ecedef;
+    padding: 20px;
+}
+.getrentals,.exportToPDF{
+    background-color:  #000d19;
+    color: #f9f9f9;
+    outline: none; 
+    border: none;  
+}
+.getrentals:hover,.exportToPDF:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
 h4{
     margin: 2rem 0;
 }
@@ -7,5 +21,39 @@ h4{
 
 /* Optional: Add some margin to the top of the table */
 .table {
+    background-color: #ecedef ;
     margin-top: 20px;
+}
+.calender-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+.content{
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+.custom-input {
+    height: 40px; /* Increase the height */
+    background-color: #eff2f5; /* Set background color */
+    border: 1px solid #ced4da; /* Optional: Adjust border style */
+    font-size: 1rem; /* Optional: Adjust font size */
+  }
+ 
+  .custom-input::-webkit-clear-button {
+    display: none; /* Optional: Hide clear button */
+  }
+  
+  .custom-input::-webkit-inner-spin-button {
+    display: none; /* Optional: Hide spinner arrows */
+  }
+  
+  .custom-input::-ms-clear {
+    display: none; /* For IE: Hide clear button */
+  }
+  
+.custom-input::-ms-expand {
+    display: none; /* For IE: Hide dropdown arrow */
 }
