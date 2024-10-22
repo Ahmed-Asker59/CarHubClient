@@ -1,0 +1,23 @@
+<div class="d-flex container-cust">
+    <app-sidebar [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+    (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)">
+    </app-sidebar>
+
+    <div class="content d-flex  my-5 flex-column">
+        <div class="container d-flex justify-content-center align-items-start">
+            <button class="box" [routerLink]="['/dashboard/reports'] "[queryParams]="{ type: 'Rentals' }">
+                <i class="fa-solid fa-chart-simple icon"></i>
+                <span class="text">Rentals</span>
+            </button>
+            <button class="box" [routerLink]="['/dashboard/reports']" [queryParams]="{ type: 'DelayedRentals' }">
+                <i class="fa-solid fa-chart-simple icon"></i>
+                <span class="text">Delayed Rentals</span>
+            </button>
+            <button class="box" [routerLink]="['/dashboard/reports']" [queryParams]="{ type: 'Reservations' }">
+                <i class="fa-solid fa-chart-simple icon"></i>
+                <span class="text">Reservations</span>
+            </button>
+        </div>
+        <app-report-viewer></app-report-viewer>
+    </div>
+</div>

@@ -22,6 +22,9 @@
           <li class="nav-item">
             <a class="nav-link text-white fw-medium" routerLinkActive="active" routerLink="/contactus" tabindex="-1">Contact Us</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-medium" routerLinkActive="active" routerLink="/dashboard/reports" tabindex="-1">Dashboard</a>
+          </li>
           <ng-container *ngIf="(accountService.currentUser$ | async ) == null">
             <li class="nav-item staff-link">
               <a class="nav-link text-white fw-medium text-white fw-medium  " routerLinkActive="active" routerLink="login" >Staff </a>
