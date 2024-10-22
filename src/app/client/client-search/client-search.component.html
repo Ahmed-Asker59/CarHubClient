@@ -1,0 +1,53 @@
+ 
+    <!--begin::Card-->
+    <div class="card">
+     
+        <div class="ms-4"><h5> Search a client</h5></div>
+        <div class="card-body">
+            
+            <!--begin::Input group-->
+           <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+            <div class="d-flex align-items-center">
+              <div class="position-relative w-md-400px me-md-2">
+                  <i class="ki-duotone ki-magnifier fs-3 text-gray-500 position-absolute top-50 translate-middle ms-6"><span class="path1"></span><span class="path2"></span></i>
+                  <input formControlName="searchQuery" type="text" class="search-field form-control form-control-solid ps-10"   placeholder="Search by mobile number, national Id or email" asp-for="Value">
+                  <div *ngIf="searchForm.get('searchQuery')?.touched && searchForm.get('searchQuery')?.invalid" class="text-danger">
+                    <small *ngIf="searchForm.get('searchQuery')?.errors?.['required']">
+                      National ID is required.
+                    </small>
+                  </div>
+              </div>
+            <div>
+              <button type="submit"  class="btn search-btn">Search</button>
+            </div>
+            </div>
+              
+           </form>
+           
+        </div>
+      </div>
+    <!--end::Card-->
+
+
+<div id="Result" class="mt-5">
+ <div>
+    <div class="card w-75 mb-3" *ngIf="client">
+        <div class="card-body">
+          <div>
+            <h5 class="card-title">{{client.firstName}} {{client.lastName}}</h5>
+          </div>
+         <div class="float-end">
+            <a  href="/clientdetails" [routerLink]="['/clientdetails', client.id]" class="details-btn btn btn-primary">Details</a>
+         </div>
+        </div>
+    </div>
+
+    <div class="card w-75 mb-3" *ngIf="client == null && hasSearched">
+      <div class="card-body">
+       No such client
+      </div>
+  </div>
+ </div>
+</div>
+ 
+ 

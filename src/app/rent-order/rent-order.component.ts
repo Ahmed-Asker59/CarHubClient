@@ -168,6 +168,7 @@ export class RentOrderComponent {
               this.initializeStripe();
             }, 500); 
             this.client = {
+              id:0,
               nationalId: this.rentalForm.get('nationalId')?.value,
               firstName: this.rentalForm.get('firstName')?.value,
               lastName: this.rentalForm.get('lastName')?.value,

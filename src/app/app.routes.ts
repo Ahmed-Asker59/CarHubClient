@@ -10,8 +10,9 @@ import { ReserveOrderComponent } from './reserve-order/reserve-order.component';
 import { RentOrderComponent } from './rent-order/rent-order.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
-import { SidebarComponent } from './Dashboard/sidebar/sidebar.component';
 import { authGuard } from './guards/auth.guard';
+import { ClientSearchComponent } from './client/client-search/client-search.component';
+import { ClientDetailsComponent } from './client/client-details/client-details.component';
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -26,10 +27,9 @@ export const routes: Routes = [
     {path:"rent/:id/:rentalfeeperday", component: RentOrderComponent},
     {path:"login", component: LoginComponent},
     {path:"register", component: RegisterComponent},
-    {path:"dashboard",
-        component: SidebarComponent,
-     canActivate:[authGuard],
-      }
+
+    {path:"searchclients",component: ClientSearchComponent},
+    {path:"clientdetails/:id", component:ClientDetailsComponent}
 
 
 
