@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +10,9 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+ 
+  constructor(private router:Router){}
+
   isLeftSidebarCollapsed = input.required<boolean>();
   changeIsLeftSidebarCollapsed = output<boolean>();
   items = [
@@ -26,5 +29,10 @@ export class SidebarComponent {
 
   closeSidenav(): void {
     this.changeIsLeftSidebarCollapsed.emit(true);
+  }
+
+  navigateToReports(): void {
+    // Navigate to the reports without query params
+    this.router.navigate(['/dashboard/reports']);
   }
 }

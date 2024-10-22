@@ -45,6 +45,11 @@ export class ReportViewerComponent implements OnInit {
         this.fetchData(this.selectedReport);
         console.log(this.selectedReport);
       }
+      else {
+        // If no type is specified, reset to default state (show buttons)
+        this.selectedReport = ''; 
+        this.hasFetchedRentals = false; 
+      }
     });
   }
 
