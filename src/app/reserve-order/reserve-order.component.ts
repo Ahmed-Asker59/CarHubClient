@@ -174,6 +174,7 @@ export class ReserveOrderComponent implements OnInit {
               this.initializeStripe();
             }, 500); 
             this.client = {
+              id: 0,
               nationalId: this.reservationForm.get('nationalId')?.value,
               firstName: this.reservationForm.get('firstName')?.value,
               lastName: this.reservationForm.get('lastName')?.value,

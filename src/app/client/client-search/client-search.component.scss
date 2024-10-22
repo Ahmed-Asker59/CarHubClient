@@ -1,0 +1,44 @@
+.search-field{
+    /* this class is for input field, if in your code its different, just substitute the class name '.search-field' */
+       
+        background-color: rgb(245, 248, 250);
+        flex-grow: 1;
+       width: 500px;
+       color: rgb(94, 98, 120);
+       font-size: 14.3px;
+       font-weight: 400;
+       height: 45px;
+    }
+
+  
+.search-btn{
+background-color: rgb(0, 158, 247);
+color: white;
+font-weight: bold;
+font-size:  14.3px;
+height: 43.6px;
+width:  89px;
+
+
+
+    }
+
+    .card .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        flex-wrap: wrap;
+        min-height: 70px;
+        padding: 0 2.25rem;
+        border-bottom: 1px solid var(--kt-card-border-color);
+    }
+
+.details-btn{
+    background-color: rgb(0, 158, 247);
+color: white;
+font-weight: bold;
+font-size:  14.3px;
+height: 35.6px;
+width:  80px;
+
+}

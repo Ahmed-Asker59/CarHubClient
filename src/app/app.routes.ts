@@ -10,8 +10,14 @@ import { ReserveOrderComponent } from './reserve-order/reserve-order.component';
 import { RentOrderComponent } from './rent-order/rent-order.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
+<<<<<<< HEAD
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
+=======
+import { authGuard } from './guards/auth.guard';
+import { ClientSearchComponent } from './client/client-search/client-search.component';
+import { ClientDetailsComponent } from './client/client-details/client-details.component';
+>>>>>>> 95852859b61650214743abd400b0a50c321717b6
 
 export const routes: Routes = [
     { path: "", component: HomeComponent },
@@ -26,10 +32,16 @@ export const routes: Routes = [
     {path:"rent/:id/:rentalfeeperday", component: RentOrderComponent},
     {path:"login", component: LoginComponent},
     {path:"register", component: RegisterComponent},
+<<<<<<< HEAD
     {path:"dashboard", component: DashboardComponent},
     {path:"dashboard/reports", component: ReportsComponent},
        
    
+=======
+
+    {path:"searchclients",component: ClientSearchComponent},
+    {path:"clientdetails/:id", component:ClientDetailsComponent}
+>>>>>>> 95852859b61650214743abd400b0a50c321717b6
 
 
 
