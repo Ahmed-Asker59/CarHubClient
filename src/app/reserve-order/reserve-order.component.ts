@@ -32,6 +32,7 @@ export class ReserveOrderComponent implements OnInit {
   client:Client = null!;
   showForm1: boolean = true;
   isAllowed:boolean = true;
+  isProcessing:boolean = false;
   car?:Car;
   @ViewChild('cardNumber') cardNumberElement?:ElementRef;
   @ViewChild('cardExpiry') cardExpiryElement?:ElementRef;
@@ -253,16 +254,23 @@ export class ReserveOrderComponent implements OnInit {
   submitForm2(){
     this.reservationForm.markAllAsTouched();
     if (this.paymentForm.valid) {
+     
+    this.isProcessing = true;
     this.paymentService.createPaymentIntent(this.reservationFee).subscribe({
       next : r =>  {
         this.paymentInfo = r;
         this.reserveCar();
 
       },
-      error: e => this.showErrorMessage(e.message)
+      error: e => {
+         this.showErrorMessage(e.message),
+        this.isProcessing = false;
+      }
 
      })
 
     }
+
+   
   }
 }

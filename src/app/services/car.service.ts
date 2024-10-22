@@ -37,11 +37,9 @@ export class CarService {
 
 
   getCar(id:number){
-
     return this.http.get<Car>(this.baseUrl+'cars/'+id);
   }
 
-  
 
 
 

@@ -234,9 +234,8 @@
 
 </ng-template> -->
 <ng-template #form2Template>
-    
     <div class="credit-container d-flex justify-content-center mt-2 mb-5">
-        <div class="row g-3">
+        <div class="row py-3 g-5">
 
           <div class="col-md-6">  
             <div class="card">
@@ -286,7 +285,6 @@
           </div>
 
           <div class="col-md-6">
-            
               <div class="card">
                     <div class="card-header p-0">
                       <h2 class="mb-0">
@@ -398,7 +396,10 @@
                 <hr class="mt-0 line">
                 <div class="p-3">
 
-                <button class="btn btn-primary btn-block free-button" type="submit" (click)="submitForm2()">Confirm Order <i class="bi bi-check-circle"></i></button> 
+                <button  [disabled]="isProcessing" class="btn btn-primary btn-block free-button" type="submit" (click)="submitForm2()">
+                  <span *ngIf="!isProcessing">Submit  <i class="bi bi-check-circle"></i></span>
+                 <span *ngIf="isProcessing">Processing...</span>
+                </button> 
                   
                 </div>
 

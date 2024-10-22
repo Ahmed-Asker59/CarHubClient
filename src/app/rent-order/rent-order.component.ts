@@ -31,6 +31,7 @@ export class RentOrderComponent {
   client?:Client;
   showForm1: boolean = true;
   isAllowed:boolean = true;
+  isProcessing:boolean = false;
   car?:Car;
   @ViewChild('cardNumber') cardNumberElement?:ElementRef;
   @ViewChild('cardExpiry') cardExpiryElement?:ElementRef;
@@ -199,6 +200,7 @@ export class RentOrderComponent {
   submitForm2(){
     this.rentalForm.markAllAsTouched();
     if (this.paymentForm.valid) {
+      this.isProcessing = true;
     this.paymentService.createPaymentIntent(this.rentalFeePerDay).subscribe({
       next : r =>  {
         this.paymentInfo = r;
@@ -206,7 +208,10 @@ export class RentOrderComponent {
  
 
       },
-      error: e => this.showErrorMessage(e.message)
+      error:  e => {
+         this.showErrorMessage(e.message),
+        this.isProcessing = false;
+      }
 
      })
 
